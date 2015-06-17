@@ -5,7 +5,7 @@
   <i class="fa fa-edit muted" title="Take Assignment"></i>
 <% end %>
 
-<%= render partial: 'modal_calendar' %>
+<%= render partial: 'assignments/modal_calendar', locals: {assignment: assignment} %>
 
 <% if current_user && current_user.teaching?(assignment.course) %>
   <% if assignment.status(current_user).name == "Future" %>
@@ -19,7 +19,7 @@
     <% end %>
     <%= link_to '<i class="fa fa-bar-chart-o" title="View Grades"></i>'.html_safe, view_grades_assignment_path(assignment) %>
   <% end %>
-  <%= link_to "", "javascript:void(0);", class: "fa fa-calendar" %>
+  <%= link_to '<i class="fa fa-calendar" title="View Calendar"></i>'.html_safe, "#due-date-modal", "data-toggle" => "modal" %>.
   <%= link_to 'BOO!', edit_assignment_path(assignment), class: "btn btn-mini" %>
 
 <% end %>
