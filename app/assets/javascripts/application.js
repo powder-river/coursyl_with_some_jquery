@@ -28,13 +28,13 @@ function hideDeletedElement() {
 }
 
 function hideAddElement() {
-  lastLink = document.getElementById('last-button');
-  lastLink.parentElement.parentElement.hidden = true;
+  var lastLink = $('#last-button');
+  lastLink.closest(".association").hide();
 }
 
 function showAddElement() {
-  lastLink = document.getElementById('last-button');
-  lastLink.parentElement.parentElement.hidden = false;
+  lastLink = $('#last-button');
+  lastLink.closest(".association").show() ;
 }
 
 function smoothScroll() {
