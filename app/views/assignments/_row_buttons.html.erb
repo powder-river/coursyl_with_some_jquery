@@ -1,8 +1,11 @@
+
 <% if assignment.status(current_user).name != "Future" %>
   <%= link_to '<i class="fa fa-edit" title="Take Assignment"></i>'.html_safe, assignment_path(assignment) %>
 <% else %>
   <i class="fa fa-edit muted" title="Take Assignment"></i>
 <% end %>
+
+<%= render partial: 'modal_calendar' %>
 
 <% if current_user && current_user.teaching?(assignment.course) %>
   <% if assignment.status(current_user).name == "Future" %>
@@ -16,5 +19,7 @@
     <% end %>
     <%= link_to '<i class="fa fa-bar-chart-o" title="View Grades"></i>'.html_safe, view_grades_assignment_path(assignment) %>
   <% end %>
-  <%= link_to 'Edit', edit_assignment_path(assignment), class: "btn btn-mini" %>
+  <%= link_to "", "javascript:void(0);", class: "fa fa-calendar" %>
+  <%= link_to 'BOO!', edit_assignment_path(assignment), class: "btn btn-mini" %>
+
 <% end %>
