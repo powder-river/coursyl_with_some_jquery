@@ -15,20 +15,16 @@
 //= require d3
 //= require_tree .
 
-var clickCount = 0;
-
 function onlyOnce() {
-  if (clickCount !== 0) {
-    return false;
-  } else {
-    clickCount++;
-    return true;
-  }
+  var button = $(event.target);
+  button.prop("disabled", "true");
+  button.closest("form").submit();
 }
 
-function hideDeletedElement(elem) {
-  elem.parentElement.parentElement.hidden = true;
-  elem.nextSibling.nextSibling.value = true;
+function hideDeletedElement() {
+  var container = $(event.target).closest(".association.container");
+  container.hide();
+  container.find(".destroy").prop("checked", "true");
 }
 
 function hideAddElement() {
@@ -36,9 +32,17 @@ function hideAddElement() {
   lastLink.parentElement.parentElement.hidden = true;
 }
 
-window.onload = hideAddElement;
-
 function showAddElement() {
   lastLink = document.getElementById('last-button');
   lastLink.parentElement.parentElement.hidden = false;
 }
+
+function smoothScroll() {
+  $('#nav a').on("click", function(){
+    var navId = $(this).attr("href");
+    $('body').animate({scrollTop: $(navId).offset().top}, 'slow');
+    return false;
+  });
+}
+
+$(smoothScroll);
