@@ -1,9 +1,11 @@
+
+
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-
+gem 'jquery-datetimepicker-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -41,7 +43,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+
   gem 'rails_12factor' #for heroku logging/compiling
 end
 
